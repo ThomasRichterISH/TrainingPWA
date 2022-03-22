@@ -1,6 +1,5 @@
-import { isPlatformBrowser } from '@angular/common';
 import { HttpHandler, HttpRequest } from '@angular/common/http';
-import { NgModule, PLATFORM_ID } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { NgModuleWithProviders } from 'ng-mocks';
 import { noop } from 'rxjs';
@@ -16,8 +15,8 @@ import { IdentityProviderCapabilities } from './identity-provider/identity-provi
  * provider factory for storage
  * We need a factory, since localStorage is not available during AOT build time.
  */
-export function storageFactory(platformId: string): OAuthStorage {
-  if (isPlatformBrowser(platformId)) {
+export function storageFactory(): OAuthStorage {
+  if (!SSR) {
     return localStorage;
   }
 }
@@ -25,7 +24,7 @@ export function storageFactory(platformId: string): OAuthStorage {
 @NgModule({
   imports: [OAuthModule.forRoot({ resourceServer: { sendAccessToken: false } }), PunchoutIdentityProviderModule],
   providers: [
-    { provide: OAuthStorage, useFactory: storageFactory, deps: [PLATFORM_ID] },
+    { provide: OAuthStorage, useFactory: storageFactory },
     {
       provide: IDENTITY_PROVIDER_IMPLEMENTOR,
       multi: true,

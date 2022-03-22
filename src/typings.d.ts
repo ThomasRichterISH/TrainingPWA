@@ -1,20 +1,17 @@
-/* SystemJS module definition */
-declare var module: NodeModule;
-
 declare module 'express-http-proxy';
 
 declare module 'express-robots-txt';
 
 declare module 'jest-extended';
 
-interface NodeModule {}
+declare const PRODUCTION_MODE: boolean;
 
-declare var PRODUCTION_MODE: boolean;
+declare const SERVICE_WORKER: boolean;
 
-declare var SERVICE_WORKER: boolean;
+declare const NGRX_RUNTIME_CHECKS: boolean;
 
-declare var NGRX_RUNTIME_CHECKS: boolean;
+declare const PWA_VERSION: string;
 
-declare var PWA_VERSION: string;
+declare const THEME: string;
 
-declare var THEME: string;
+declare const SSR: boolean;
