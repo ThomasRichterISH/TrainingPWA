@@ -339,6 +339,11 @@
               "name": "rxjs/operators",
               "filePattern": "^(?!.*/store/(sentry-config/sentry-config|seo/seo|core/messages/messages)\\.effects\\.ts$).*\\.effects\\.ts*$",
               "message": "The usage of \"tap\" in effects, if not related to 3rd party integrations, can usually be transformed properly into RxJS stream code."
+            },
+            {
+              "name": "@typescript-eslint/experimental-utils",
+              "filePattern": ".*eslint-rules/.*",
+              "message": "Change to \"@typescript-eslint/utils\"."
             }
           ]
         ],
@@ -644,6 +649,7 @@
         "ish-custom-rules/use-component-change-detection": "warn",
         "ish-custom-rules/use-correct-component-overrides": "warn",
         "ish-custom-rules/use-jest-extended-matchers-in-tests": "warn",
+        "ish-custom-rules/use-ssr-variable-instead-of-platform-id": "warn",
         "ish-custom-rules/require-formly-code-documentation": "warn",
         "jest/no-commented-out-tests": "warn",
         "jest/no-disabled-tests": "warn",
