@@ -80,7 +80,7 @@ export class Auth0IdentityProvider implements IdentityProvider {
     });
     this.oauthService.setupAutomaticSilentRefresh();
     this.apiTokenService
-      .restore$(['basket', 'order'])
+      .restore$(['order'])
       .pipe(
         switchMap(() => from(this.oauthService.loadDiscoveryDocumentAndTryLogin())),
         switchMap(() =>
