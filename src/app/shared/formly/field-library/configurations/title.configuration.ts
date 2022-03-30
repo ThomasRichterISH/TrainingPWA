@@ -19,7 +19,7 @@ export class TitleConfiguration extends FieldLibraryConfiguration {
     return {
       type: 'ish-select-field',
       templateOptions: {
-        label: 'account.default_address.title.label',
+        label: 'account.address.title.label',
         placeholder: 'account.option.select.text',
         options: this.formsService.getSalutationOptions(),
       },

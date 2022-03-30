@@ -16,7 +16,7 @@ export class LastNameConfiguration extends FieldLibraryConfiguration {
     return {
       type: 'ish-text-input-field',
       templateOptions: {
-        label: 'account.default_address.lastname.label',
+        label: 'account.address.lastname.label',
         required: true,
       },
       validators: {
@@ -24,7 +24,7 @@ export class LastNameConfiguration extends FieldLibraryConfiguration {
       },
       validation: {
         messages: {
-          required: 'account.address.lastname.missing.error',
+          required: 'account.address.lastname.error.required',
           noSpecialChars: 'account.name.error.forbidden.chars',
         },
       },

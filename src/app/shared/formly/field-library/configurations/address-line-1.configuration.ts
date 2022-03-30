@@ -14,12 +14,12 @@ export class AddressLine1Configuration extends FieldLibraryConfiguration {
     return {
       type: 'ish-text-input-field',
       templateOptions: {
-        label: 'account.default_address.street.label',
+        label: 'account.address.street.label',
         required: true,
       },
       validation: {
         messages: {
-          required: 'account.address.address1.missing.error',
+          required: 'account.address.address1.error.required',
         },
       },
     };

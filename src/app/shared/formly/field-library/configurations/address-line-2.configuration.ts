@@ -14,7 +14,7 @@ export class AddressLine2Configuration extends FieldLibraryConfiguration {
     return {
       type: 'ish-text-input-field',
       templateOptions: {
-        label: 'account.default_address.street2.label',
+        label: 'account.address.street2.label',
         required: false,
       },
     };

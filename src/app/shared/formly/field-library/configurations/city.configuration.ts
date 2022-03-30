@@ -14,12 +14,12 @@ export class CityConfiguration extends FieldLibraryConfiguration {
     return {
       type: 'ish-text-input-field',
       templateOptions: {
-        label: 'account.default_address.city.label',
+        label: 'account.address.city.label',
         required: true,
       },
       validation: {
         messages: {
-          required: 'account.address.city.missing.error',
+          required: 'account.address.city.error.required',
         },
       },
     };

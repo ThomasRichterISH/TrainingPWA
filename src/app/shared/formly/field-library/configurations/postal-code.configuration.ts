@@ -14,12 +14,12 @@ export class PostalCodeConfiguration extends FieldLibraryConfiguration {
     return {
       type: 'ish-text-input-field',
       templateOptions: {
-        label: 'account.default_address.postalcode.label',
+        label: 'account.address.postalcode.label',
         required: true,
       },
       validation: {
         messages: {
-          required: 'account.address.postalcode.missing.error',
+          required: 'account.address.postalcode.error.required',
         },
       },
     };
