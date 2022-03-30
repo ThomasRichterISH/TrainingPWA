@@ -33,7 +33,6 @@ export class AccountProfileCompanyComponent implements OnInit {
   ngOnInit() {
     this.model = pick(this.currentCustomer, 'companyName', 'companyName2', 'taxationID');
     this.fields = this.fieldLibrary.getConfigurationGroup('companyInfo', { companyName1: { key: 'companyName' } });
-    console.log('---------------------------------------------------------------------------', this.fields);
   }
 
   /**
