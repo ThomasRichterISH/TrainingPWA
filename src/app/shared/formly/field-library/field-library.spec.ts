@@ -3,13 +3,20 @@ import { TestBed } from '@angular/core/testing';
 
 import { FIELD_LIBRARY_CONFIGURATION, FIELD_LIBRARY_CONFIGURATION_GROUP, FieldLibrary } from './field-library';
 
-describe('Reusable Formly Field Configurations Provider', () => {
-  let reusableFormlyFieldConfigurationsProvider: FieldLibrary;
+describe('Field Library', () => {
+  let fieldLibrary: FieldLibrary;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        FieldLibrary,
+        {
+          provide: FIELD_LIBRARY_CONFIGURATION_GROUP,
+          useValue: {
+            id: 'ab',
+            shortcutFor: ['a', 'b'],
+          },
+          multi: true,
+        },
         {
           provide: FIELD_LIBRARY_CONFIGURATION,
           useValue: {
@@ -34,22 +41,15 @@ describe('Reusable Formly Field Configurations Provider', () => {
           },
           multi: true,
         },
-        {
-          provide: FIELD_LIBRARY_CONFIGURATION_GROUP,
-          useValue: {
-            id: 'ab',
-            shortcutFor: ['a', 'b'],
-          },
-          multi: true,
-        },
+        FieldLibrary,
       ],
     });
-    reusableFormlyFieldConfigurationsProvider = TestBed.inject(FieldLibrary);
+    fieldLibrary = TestBed.inject(FieldLibrary);
   });
 
   describe('single configuration', () => {
     it('should get configuration by id', () => {
-      expect(reusableFormlyFieldConfigurationsProvider.getConfiguration('a')).toMatchInlineSnapshot(`
+      expect(fieldLibrary.getConfiguration('a')).toMatchInlineSnapshot(`
         Object {
           "key": "a",
           "templateOptions": Object {
@@ -62,7 +62,7 @@ describe('Reusable Formly Field Configurations Provider', () => {
 
     it('should get configuration and override correctly', () => {
       expect(
-        reusableFormlyFieldConfigurationsProvider.getConfiguration('a', {
+        fieldLibrary.getConfiguration('a', {
           templateOptions: {
             label: 'new label',
           },
@@ -80,7 +80,7 @@ describe('Reusable Formly Field Configurations Provider', () => {
 
     it('should get configuration and override array correctly', () => {
       expect(
-        reusableFormlyFieldConfigurationsProvider.getConfiguration('c', {
+        fieldLibrary.getConfiguration('c', {
           wrappers: ['w2'],
         })
       ).toMatchInlineSnapshot(`
@@ -100,7 +100,7 @@ describe('Reusable Formly Field Configurations Provider', () => {
 
   describe('configuration group', () => {
     it('should get configuration group', () => {
-      expect(reusableFormlyFieldConfigurationsProvider.getConfigurationGroup('ab')).toMatchInlineSnapshot(`
+      expect(fieldLibrary.getConfigurationGroup('ab')).toMatchInlineSnapshot(`
         Array [
           Object {
             "key": "a",
@@ -122,7 +122,7 @@ describe('Reusable Formly Field Configurations Provider', () => {
 
     it('should get configuration group and override correctly', () => {
       expect(
-        reusableFormlyFieldConfigurationsProvider.getConfigurationGroup('ab', {
+        fieldLibrary.getConfigurationGroup('ab', {
           a: {
             templateOptions: {
               label: 'new a label',
@@ -158,7 +158,7 @@ describe('Reusable Formly Field Configurations Provider', () => {
 
   describe('getAvailableConfigurationIds', () => {
     it('should get available ids', () => {
-      expect(reusableFormlyFieldConfigurationsProvider.getAvailableConfigurationIds()).toMatchInlineSnapshot(`
+      expect(fieldLibrary.getAvailableConfigurationIds()).toMatchInlineSnapshot(`
         Array [
           "a",
           "b",
