@@ -22,7 +22,10 @@ describe('User Profile Form Component', () => {
     formsService = mock(FormsService);
 
     await TestBed.configureTestingModule({
-      imports: [FormlyTestingModule, TranslateModule.forRoot()],
+      imports: [
+        FormlyTestingModule.withPresetMocks(['title', 'firstName', 'lastName', 'phoneHome', 'email']),
+        TranslateModule.forRoot(),
+      ],
       declarations: [MockComponent(ErrorMessageComponent), UserProfileFormComponent],
       providers: [{ provide: FormsService, useFactory: () => instance(formsService) }],
     }).compileComponents();

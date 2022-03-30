@@ -10,6 +10,7 @@ import { FormlyAddressFormComponent } from 'ish-shared/formly-address-forms/comp
 import { FormlyTestingComponentsModule } from 'ish-shared/formly/dev/testing/formly-testing-components.module';
 import { FormlyTestingExampleComponent } from 'ish-shared/formly/dev/testing/formly-testing-example/formly-testing-example.component';
 import { FormlyTestingFieldgroupExampleComponent } from 'ish-shared/formly/dev/testing/formly-testing-fieldgroup-example/formly-testing-fieldgroup-example.component';
+import { FormlyTestingModule } from 'ish-shared/formly/dev/testing/formly-testing.module';
 
 import { CheckoutAddressAnonymousFormComponent } from './checkout-address-anonymous-form.component';
 
@@ -33,6 +34,7 @@ describe('Checkout Address Anonymous Form Component', () => {
           ],
         }),
         FormlyTestingComponentsModule,
+        FormlyTestingModule.withPresetMocks(['taxationID']),
         NgbCollapseModule,
         TranslateModule.forRoot(),
       ],
