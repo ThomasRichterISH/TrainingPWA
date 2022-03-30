@@ -15,6 +15,8 @@ kb_sync_latest_only
     - [Retrieving Configurations](#retrieving-configurations)
     - [Retrieving Configuration Groups](#retrieving-configuration-groups)
     - [Defining your own Configurations & Configuration Groups](#defining-your-own-configurations--configuration-groups)
+      - [Defining a FieldLibraryConfiguration](#defining-a-fieldlibraryconfiguration)
+      - [Defining a FieldLibraryConfigurationGroup](#defining-a-fieldlibraryconfigurationgroup)
   - [Automatic Field Replacement using the '#' Pseudo-type](#automatic-field-replacement-using-the--pseudo-type)
   - [Address Forms](#address-forms)
     - [How to Use the formly-address-form Component](#how-to-use-the-formly-address-form-component)
@@ -102,22 +104,40 @@ this.fieldLibraryService.getConfigurationGroup('personalInfo', {
 ### Defining your own Configurations & Configuration Groups
 
 Whether you're customizing the PWA in a project or contributing to the standard, you might need to expand the field library with further field configurations.
+These provided configurations & configurations groups will be processed by the `FieldLibraryService` and made accessible via the relevant methods.
 
-All configuration regarding this is located in the `field-library.module.ts`.
+All configurations are registered in the `field-library.module.ts`.
+
+#### Defining a FieldLibraryConfiguration
 
 To define a new reusable field configuration, use the `field-library-configuration` schematic.
 It will generate a `.configuration.ts` file and register the configuration in the `providers` array of the module. <br/> Populate the file with whatever logic you need and let the `getConfiguration()` method return a `FormlyFieldConfig`.
 You can return a static value or inject services and create a dynamic, smart configuration.
 
+> **Note:** A field library configuration is a typescript file. If you need to adapt these configurations in a project, consider using a [theme-specific override](./customizations.md#theme-specific-overrides) for maximum flexibility.
+
+#### Defining a FieldLibraryConfigurationGroup
+
 To define a new reusable configuration group, provide a new value for the `FIELD_LIBRARY_CONFIGURATION_GROUP` injection token.
 The value has to conform to the `ConfigurationGroup` type.<br/>
+
+```typescript
+// ConfigurationGroup type
+type ConfigurationGroup = { id: string; shortcutFor: string[] };
+
+// field-library.module.ts
+...
+{
+  provide: FIELD_LIBRARY_CONFIGURATION_GROUP,
+  useValue: { id: 'exampleGroup', shortcutFor: ['firstName', 'lastName', 'companyName'] },
+  multi: true,
+},
+...
+```
+
 Use the `id` property to define the id through which developers will access the configuration group. <br/>
 The `shortcutFor` property defines which configurations the group will be mapped to.
 You can introduce dynamic behavior by using [factory providers](https://angular.io/guide/dependency-injection-providers#using-factory-providers) to generate `ConfigurationGroup` objects.
-
-These provided configurations & configurations groups will be processed by the `FieldLibraryService` and made accessible via the relevant methods.
-
-> **Note:** A field library configuration is a typescript file. If you need to adapt these configurations in a project, consider using a [theme-specific override](./customizations.md#theme-specific-overrides) for maximum flexibility.
 
 ## Automatic Field Replacement using the '#' Pseudo-type
 
@@ -229,7 +249,12 @@ They are automatically updated using sync-formly-docs.ts -->
 | `postalCode`     | ish-text-input-field | Postal code, required by default                                                            |
 | `city`           | ish-text-input-field | City, required by default                                                                   |
 
- <!-- sync-end -->
+| ConfigurationGroup ID | ShortcutFor Types                               |
+| --------------------- | ----------------------------------------------- |
+| `personalInfo`        | `'title', 'firstName', 'lastName', 'phoneHome'` |
+| `companyInfo`         | `'companyName1', 'companyName2', 'taxationID'`  |
+
+   <!-- sync-end -->
 
 # Further References
 
