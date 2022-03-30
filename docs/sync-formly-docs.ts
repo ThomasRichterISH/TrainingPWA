@@ -110,8 +110,6 @@ function extractDescription(fileContent: string) {
 }
 
 function getTableContentsConfigurationGroups(): string {
-  configurationGroups.forEach(e => console.log(e));
-
   const tableRows = configurationGroups.map(
     (groupStr: string) => `| ${extractGroupId(groupStr)} | ${extractGroupShortcutFor(groupStr)} |`
   );
