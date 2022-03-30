@@ -48,8 +48,10 @@ To get an idea of the necessary mechanism search for the usage of `useCombinedOb
 The `shared/formly` folder - containing all custom types, wrappers, etc. - was updated. <br/>
 For a cleaner separation of code artifacts, there are now multiple subfolders declaring their own modules where formly is partly configured.
 The `FormlyModule` brings all these together so you can use it just like before.
-If you made any changes in the `shared/formly`, you will have to adapt the corresponding modules. <br/>
-Additionally, we introduced a `field-library` subfolder that contains a `FieldLibrary` service which enables you to define reusable `FormlyFieldConfig`s and access them easily.
+If you made any changes in `shared/formly`, you will have to adapt the corresponding modules. <br/>
+Additionally, we introduced a `formly/field-library` subfolder that contains a `FieldLibrary` service which enables you to define reusable `FormlyFieldConfig`s and access them easily.
+If you have customized anything in `shared/formly-address-forms/configurations/address-form-configuration.ts`, for example the `standardFields` variable, you will have to migrate these changes by defining new `FieldLibraryConfiguration`s.
+The address form configurations now use the new `FieldLibrary` functionality under the hood. <br/>
 For more information, read the new [Field Library](../guides/field-library.md) documentation.
 
 ## 1.4 to 2.0
