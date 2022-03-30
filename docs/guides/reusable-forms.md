@@ -11,15 +11,15 @@ kb_sync_latest_only
 
 - [Reusable Forms](#reusable-forms)
   - [Overview](#overview)
-  - [The FieldLibraryService](#the-fieldlibraryservice)
-    - [Retrieving configurations](#retrieving-configurations)
-    - [Retrieving configuration Groups](#retrieving-configuration-groups)
-    - [Defining your own configurations & configuration groups](#defining-your-own-configurations--configuration-groups)
-  - [Automatic field replacement using the '#' pseudo-type](#automatic-field-replacement-using-the--pseudo-type)
+  - [The Field Library Service](#the-field-library-service)
+    - [Retrieving Configurations](#retrieving-configurations)
+    - [Retrieving Configuration Groups](#retrieving-configuration-groups)
+    - [Defining your own Configurations & Configuration Groups](#defining-your-own-configurations--configuration-groups)
+  - [Automatic Field Replacement using the '#' Pseudo-type](#automatic-field-replacement-using-the--pseudo-type)
   - [Address Forms](#address-forms)
     - [How to Use the formly-address-form Component](#how-to-use-the-formly-address-form-component)
     - [How to Create a New Country Specific Form](#how-to-create-a-new-country-specific-form)
-  - [Standard reusable form configurations](#standard-reusable-form-configurations)
+  - [Standard Reusable Form Configurations](#standard-reusable-form-configurations)
 - [Further References](#further-references)
 
 <!-- cSpell: enable -->
@@ -30,17 +30,17 @@ Formly naturally facilitates the reuse of forms through its configuration-based,
 In the Intershop PWA, there are a number of ways to enhance this reusability and provide developers with the ability to centrally define common form field configurations that can be used throughout the app.
 This article showcases the different ways this can be done.
 
-> **Note:** Do understand this documentation, a basic understanding of [Formly](./formly.md) is required.
+> **Note:** To understand this documentation, a basic understanding of [Formly](./formly.md) is required.
 
-## The FieldLibraryService
+## The Field Library Service
 
 To enable working with reusable form configurations, the `FieldLibraryService` is an integral part of the PWA.
 It can be injected anywhere you need to work with formly and provides a simple interface with which to retrieve standard `FormlyFieldConfig`s.
 
-### Retrieving configurations
+### Retrieving Configurations
 
 To retrieve a predefined `FormlyFieldConfig`, use the `getConfiguration` method.
-An basic example could look like this:
+A basic example could look like this:
 
 ```typescript
 constructor(private fieldLibraryService: FieldLibraryService){}
@@ -54,7 +54,7 @@ this.fields = [
 
 To use a predefined configuration but modify some properties, the `getConfiguration` method also takes an optional `override` argument.
 Use it to define any changes you want to make to the configuration.
-The properties defined in `override` will be deep merged into the standard configuration, overwriting duplicate properties but not affecting others.
+The properties defined in `override` will be deeply merged into the standard configuration, overwriting duplicate properties but not affecting others.
 
 For example, you can use the standard `firstName` field but change the label like this:
 
@@ -66,7 +66,7 @@ this.fieldLibraryService.getConfiguration('firstName', {
 });
 ```
 
-### Retrieving configuration Groups
+### Retrieving Configuration Groups
 
 Similar to configurations, _configuration groups_ are predefined groups of fields that will often be used together.
 They are defined in the `field-library.module.ts` (refer to [the next section](#defining-your-own-configurations--configuration-groups) for details).
@@ -99,7 +99,7 @@ this.fieldLibraryService.getConfigurationGroup('personalInfo', {
 });
 ```
 
-### Defining your own configurations & configuration groups
+### Defining your own Configurations & Configuration Groups
 
 Whether you're customizing the PWA in a project or contributing to the standard, you might need to expand the field library with further field configurations.
 
@@ -119,7 +119,7 @@ These provided configurations & configurations groups will be processed by the `
 
 > **Note:** A field library configuration is a typescript file. If you need to adapt these configurations in a project, consider using a [theme-specific override](./customizations.md#theme-specific-overrides) for maximum flexibility.
 
-## Automatic field replacement using the '#' pseudo-type
+## Automatic Field Replacement using the '#' Pseudo-type
 
 For an even cleaner development experience, it is possible to reuse formly field configurations without using the `FieldLibraryService`, saving a lot of boiler-plate code.
 
@@ -151,7 +151,7 @@ This is equivalent to the example given in [Retrieving configurations](#retrievi
 
 ## Address Forms
 
-Address forms are a special kind of reusable form an as such are treated differently in the Intershop PWA.
+Address forms are a special kind of reusable forms and as such are treated differently in the Intershop PWA.
 Under the hood, they also use the functionality explained above, but the address configurations are declared in their own module and access to address forms is simplified via the `formly-address-form` component.
 
 ### How to Use the formly-address-form Component
@@ -207,7 +207,7 @@ export class AddressFormEXConfiguration extends AddressFormConfiguration {
 
 - use the `addressesFieldConfiguration` helper method to quickly reuse common address field configurations (see `standardFields`).
 
-## Standard reusable form configurations
+## Standard Reusable Form Configurations
 
 The following is a list of reusable field configurations available in the PWA.
 

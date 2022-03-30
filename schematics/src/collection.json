@@ -10,7 +10,7 @@
     "field-library-configuration": {
       "aliases": ["flc"],
       "factory": "./field-library-configuration/factory#createFieldLibraryConfiguration",
-      "description": "Create an field library configuration item",
+      "description": "Create a field library configuration item",
       "schema": "./field-library-configuration/schema.json"
     },
     "cms-component": {
