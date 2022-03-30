@@ -31,7 +31,7 @@ If you are looking for documentation, refer to [older documentation](https://git
 ### Reusable Form Components
 
 - Form components are available as Formly field types that come with wrappers and extensions. You can find them in: _app/shared/formly/_ or _app/shared/formly-address-forms/components_. Refer to our [Formly Documentation](./formly.md) for more information.
-- It is possible to define formly field configurations that can be reused anywhere in the PWA. You can find them in: _app/shared/formly/field-library_. Refer to [Reusable Forms](./reusable-forms.md) for more information.
+- It is possible to define formly field configurations that can be reused anywhere in the PWA. You can find them in: _app/shared/formly/field-library_. Refer to the [Field Library docs](./field-library.md) for more information.
 - These forms can be used as (sub)forms on arbitrary pages, e.g., there are address forms on registration page, checkout and _My Account_ pages.
 
 ### Page Specific Form Components
@@ -101,4 +101,4 @@ Use the available field types and wrappers to construct your form in the compone
 # Further References
 
 - [Formly documentation](./formly.md)
-- [Reusable forms documentation](./reusable-forms.md)
+- [Field Library documentation](./field-library.md)

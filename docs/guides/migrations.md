@@ -45,6 +45,13 @@ In addition a mechanism was introduced to trigger such personalized REST calls a
 This way of loading personalized data might need to be added to any custom implementations that potentially fetch personalized data.
 To get an idea of the necessary mechanism search for the usage of `useCombinedObservableOnAction` and `personalizationStatusDetermined` in the source code.
 
+The `shared/formly` folder - containing all custom types, wrappers, etc. - was updated. <br/>
+For a cleaner separation of code artifacts, there are now multiple subfolders declaring their own modules where formly is partly configured.
+The `FormlyModule` brings all these together so you can use it just like before.
+If you made any changes in the `shared/formly`, you will have to adapt the corresponding modules. <br/>
+Additionally, we introduced a `field-library` subfolder that contains a `FieldLibrary` service which enables you to define reusable `FormlyFieldConfig`s and access them easily.
+For more information, read the new [Field Library](../guides/field-library.md) documentation.
+
 ## 1.4 to 2.0
 
 Since [TSLint has been deprecated](https://blog.palantir.com/tslint-in-2019-1a144c2317a9) for a while now and Angular removed the TSLint support we had to migrate our project from TSLint to ESLint as well.

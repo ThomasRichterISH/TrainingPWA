@@ -30,7 +30,7 @@ const configurationGroups = moduleContent.match(
 /**
  * READ DOCUMENTATION FILE AND REPLACE TABLE CONTENTS
  **/
-const documentationFilePath = 'docs/guides/reusable-forms.md';
+const documentationFilePath = 'docs/guides/field-library.md';
 
 const documentationContent = readFileSync(documentationFilePath, {
   encoding: 'utf-8',
@@ -39,7 +39,7 @@ const documentationContent = readFileSync(documentationFilePath, {
 const syncPattern = /<!-- sync-start -->([\s\S]*)<!-- sync-end -->/gm;
 
 if (!documentationContent.match(syncPattern)) {
-  console.error("Can't find synchronization comments. Did you manually edit reusable-forms.md?");
+  console.error("Can't find synchronization comments. Did you manually edit field-library.md?");
 }
 
 const updatedDocumentationContent = documentationContent.replace(
@@ -121,12 +121,10 @@ function getTableContentsConfigurationGroups(): string {
 
 function extractGroupId(content: string) {
   const id = content.match(/(?<=id: ')(\S*)(?=')/)?.[1] ?? '?';
-  console.log('id', id);
   return `\`${id}\``;
 }
 
 function extractGroupShortcutFor(content: string) {
   const shortcutFor = content.match(/(?<=shortcutFor: \[)([^\]]*?)(?=\])/)?.[1] ?? '?';
-  console.log('shortcutFor', shortcutFor);
   return `\`${shortcutFor}\``;
 }

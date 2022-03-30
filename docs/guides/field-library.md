@@ -5,11 +5,11 @@ kb_everyone
 kb_sync_latest_only
 -->
 
-# Reusable Forms
+# Field Library
 
 <!-- cSpell: disable -->
 
-- [Reusable Forms](#reusable-forms)
+- [Field Library](#field-library)
   - [Overview](#overview)
   - [The Field Library](#the-field-library)
     - [Retrieving Configurations](#retrieving-configurations)
@@ -37,6 +37,7 @@ This article showcases the different ways this can be done.
 ## The Field Library
 
 To enable working with reusable form configurations, the `FieldLibrary` is an integral part of the PWA.
+Imagine every configuration object to be a book in this library.
 It can be injected anywhere you need to work with formly and provides a simple interface with which to retrieve standard `FormlyFieldConfig`s.
 
 ### Retrieving Configurations
