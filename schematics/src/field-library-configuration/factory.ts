@@ -2,11 +2,10 @@ import { strings } from '@angular-devkit/core';
 import { classify } from '@angular-devkit/core/src/utils/strings';
 import { Rule, apply, applyTemplates, chain, mergeWith, move, url } from '@angular-devkit/schematics';
 import { getWorkspace } from '@schematics/angular/utility/workspace';
+import { PWAFieldLibrarySchema as Options } from 'schemas/field-library-configuration/schema';
 
 import { applyLintFix } from '../utils/lint-fix';
 import { addTokenProviderToNgModule } from '../utils/registration';
-
-import { PWAFieldLibrarySchema as Options } from './schema';
 
 export function createFieldLibraryConfiguration(options: Options): Rule {
   return async host => {
