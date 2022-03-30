@@ -15,7 +15,7 @@ export const FIELD_LIBRARY_CONFIGURATION_GROUP = new InjectionToken<Configuratio
 );
 
 @Injectable()
-export class FieldLibraryService {
+export class FieldLibrary {
   constructor(
     @Inject(FIELD_LIBRARY_CONFIGURATION)
     fieldLibraryConfigurations: FieldLibraryConfiguration[],

@@ -1,19 +1,15 @@
 /* eslint-disable ish-custom-rules/ordered-imports */
 import { TestBed } from '@angular/core/testing';
 
-import {
-  FIELD_LIBRARY_CONFIGURATION,
-  FIELD_LIBRARY_CONFIGURATION_GROUP,
-  FieldLibraryService,
-} from './field-library.service';
+import { FIELD_LIBRARY_CONFIGURATION, FIELD_LIBRARY_CONFIGURATION_GROUP, FieldLibrary } from './field-library';
 
 describe('Reusable Formly Field Configurations Provider', () => {
-  let reusableFormlyFieldConfigurationsProvider: FieldLibraryService;
+  let reusableFormlyFieldConfigurationsProvider: FieldLibrary;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        FieldLibraryService,
+        FieldLibrary,
         {
           provide: FIELD_LIBRARY_CONFIGURATION,
           useValue: {
@@ -48,7 +44,7 @@ describe('Reusable Formly Field Configurations Provider', () => {
         },
       ],
     });
-    reusableFormlyFieldConfigurationsProvider = TestBed.inject(FieldLibraryService);
+    reusableFormlyFieldConfigurationsProvider = TestBed.inject(FieldLibrary);
   });
 
   describe('single configuration', () => {

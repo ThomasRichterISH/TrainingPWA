@@ -11,7 +11,7 @@ kb_sync_latest_only
 
 - [Reusable Forms](#reusable-forms)
   - [Overview](#overview)
-  - [The Field Library Service](#the-field-library-service)
+  - [The Field Library](#the-field-library)
     - [Retrieving Configurations](#retrieving-configurations)
     - [Retrieving Configuration Groups](#retrieving-configuration-groups)
     - [Defining your own Configurations & Configuration Groups](#defining-your-own-configurations--configuration-groups)
@@ -34,9 +34,9 @@ This article showcases the different ways this can be done.
 
 > **Note:** To understand this documentation, a basic understanding of [Formly](./formly.md) is required.
 
-## The Field Library Service
+## The Field Library
 
-To enable working with reusable form configurations, the `FieldLibraryService` is an integral part of the PWA.
+To enable working with reusable form configurations, the `FieldLibrary` is an integral part of the PWA.
 It can be injected anywhere you need to work with formly and provides a simple interface with which to retrieve standard `FormlyFieldConfig`s.
 
 ### Retrieving Configurations
@@ -45,12 +45,12 @@ To retrieve a predefined `FormlyFieldConfig`, use the `getConfiguration` method.
 A basic example could look like this:
 
 ```typescript
-constructor(private fieldLibraryService: FieldLibraryService){}
+constructor(private fieldLibrary: FieldLibrary){}
 ...
 
 this.fields = [
-  this.fieldLibraryService.getConfiguration('firstName'),
-  this.fieldLibraryService.getConfiguration('lastName')
+  this.fieldLibrary.getConfiguration('firstName'),
+  this.fieldLibrary.getConfiguration('lastName')
 ]
 ```
 
@@ -61,7 +61,7 @@ The properties defined in `override` will be deeply merged into the standard con
 For example, you can use the standard `firstName` field but change the label like this:
 
 ```typescript
-this.fieldLibraryService.getConfiguration('firstName', {
+this.fieldLibrary.getConfiguration('firstName', {
   templateOptions: {
     label: 'New Label',
   },
@@ -78,7 +78,7 @@ You can retrieve a configuration group with the `getConfigurationGroup` method, 
 For example, the following code snippet will return an array of configurations containing `title`, `firstName`, `lastName` and `phoneHome` field configurations per default:
 
 ```typescript
-this.fields = this.fieldLibraryService.getConfigurationGroup('personalInfo');
+this.fields = this.fieldLibrary.getConfigurationGroup('personalInfo');
 ```
 
 Just like the singular `getConfiguration` method, it is possible to override any `FormlyFieldConfig`s provided by `getConfigurationGroup`. <br/> To do so, use the optional `overrides` property.
@@ -87,7 +87,7 @@ Because `getConfigurationGroup` returns multiple field configurations, you will 
 For example, the following code snippet will return the `personalInfo` configuration group but modify `firstName` to not be required anymore and update the `lastName` field's label:
 
 ```typescript
-this.fieldLibraryService.getConfigurationGroup('personalInfo', {
+this.fieldLibrary.getConfigurationGroup('personalInfo', {
   firstName: {
     templateOptions: {
       required: false,
@@ -104,7 +104,7 @@ this.fieldLibraryService.getConfigurationGroup('personalInfo', {
 ### Defining your own Configurations & Configuration Groups
 
 Whether you're customizing the PWA in a project or contributing to the standard, you might need to expand the field library with further field configurations.
-These provided configurations & configurations groups will be processed by the `FieldLibraryService` and made accessible via the relevant methods.
+These provided configurations & configurations groups will be processed by the `FieldLibrary` and made accessible via the relevant methods.
 
 All configurations are registered in the `field-library.module.ts`.
 
@@ -141,7 +141,7 @@ You can introduce dynamic behavior by using [factory providers](https://angular.
 
 ## Automatic Field Replacement using the '#' Pseudo-type
 
-For an even cleaner development experience, it is possible to reuse formly field configurations without using the `FieldLibraryService`, saving a lot of boiler-plate code.
+For an even cleaner development experience, it is possible to reuse formly field configurations without using the `FieldLibrary`, saving a lot of boiler-plate code.
 
 To take advantage of this feature, you can use the pseudo-types prefixed by a `#`.
 For example, if you want to use the `firstName` configuration in your form, simply add the following object to your `FormlyFieldConfig[]`:
@@ -165,7 +165,7 @@ For example, defining a new label text works like this:
 }
 ```
 
-This is equivalent to the example given in [Retrieving configurations](#retrieving-configurations) but doesn't require you to inject the service.
+This is equivalent to the example given in [Retrieving configurations](#retrieving-configurations) but doesn't require you to inject the library.
 
 > **Note:** Currently, it is not possible to use configuration groups with this shorthand syntax. This is a known limitation and might be addressed in future versions.
 

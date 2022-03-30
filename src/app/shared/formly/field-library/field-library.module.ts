@@ -15,17 +15,13 @@ import { PhoneHomeConfiguration } from './configurations/phone-home.configuratio
 import { PostalCodeConfiguration } from './configurations/postal-code.configuration';
 import { TaxationIDConfiguration } from './configurations/taxation-id.configuration';
 import { TitleConfiguration } from './configurations/title.configuration';
+import { FIELD_LIBRARY_CONFIGURATION, FIELD_LIBRARY_CONFIGURATION_GROUP, FieldLibrary } from './field-library';
 import { registerLibraryConfigReplacementExtension } from './library-config-replacement.extension';
-import {
-  FIELD_LIBRARY_CONFIGURATION,
-  FIELD_LIBRARY_CONFIGURATION_GROUP,
-  FieldLibraryService,
-} from './services/field-library/field-library.service';
 
 @NgModule({
   imports: [CommonModule, FormsSharedModule, FormlyBaseModule.forChild({})],
   providers: [
-    FieldLibraryService,
+    FieldLibrary,
     { provide: FIELD_LIBRARY_CONFIGURATION, useClass: TitleConfiguration, multi: true },
     { provide: FIELD_LIBRARY_CONFIGURATION, useClass: FirstNameConfiguration, multi: true },
     { provide: FIELD_LIBRARY_CONFIGURATION, useClass: LastNameConfiguration, multi: true },
@@ -50,7 +46,7 @@ import {
     {
       provide: FORMLY_CONFIG,
       useFactory: registerLibraryConfigReplacementExtension,
-      deps: [FieldLibraryService],
+      deps: [FieldLibrary],
       multi: true,
     },
   ],
