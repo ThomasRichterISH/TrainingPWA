@@ -1,3 +1,7 @@
-<p>
-  warehouses-page works!
-</p>
+<ng-container *ngIf="warehouses$ | async as warehouses">
+<div *ngFor="let warehouse of warehouses">
+{{ warehouse.warehouseId }}, {{
+warehouse.warehouseLocation }}, {{
+warehouse.warehouseCapacity }}
+</div>
+</ng-container>
