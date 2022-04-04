@@ -10,6 +10,7 @@ import { CustomUrlSerializer } from 'ish-core/utils/custom-url-serializer';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
+import { InventoryRoutingModule } from './extensions/inventory/pages/inventory-routing.module';
 import { PunchoutRoutingModule } from './extensions/punchout/pages/punchout-routing.module';
 import { QuickorderRoutingModule } from './extensions/quickorder/pages/quickorder-routing.module';
 import { QuotingRoutingModule } from './extensions/quoting/pages/quoting-routing.module';
@@ -30,6 +31,7 @@ import { ShellModule } from './shell/shell.module';
     QuotingRoutingModule,
     PunchoutRoutingModule,
     TactonRoutingModule,
+    InventoryRoutingModule,
     AppLastRoutingModule,
   ],
   bootstrap: [AppComponent],

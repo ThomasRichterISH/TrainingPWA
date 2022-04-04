@@ -25,6 +25,7 @@ export interface Environment {
     | 'compare'
     | 'rating'
     | 'recently'
+    | 'inventory'
     /* B2B features */
     | 'advancedVariationHandling'
     | 'businessCustomerRegistration'
@@ -119,7 +120,7 @@ export const ENVIRONMENT_DEFAULTS: Omit<Environment, 'icmChannel'> = {
   identityProvider: 'ICM',
 
   /* FEATURE TOOGLES */
-  features: ['compare', 'guestCheckout', 'recently', 'rating', 'wishlists'],
+  features: ['compare', 'guestCheckout', 'recently', 'rating', 'wishlists', 'inventory'],
 
   /* PROGRESSIVE WEB APP CONFIGURATIONS */
   smallBreakpointWidth: 576,

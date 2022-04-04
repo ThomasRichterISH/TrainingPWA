@@ -24,6 +24,7 @@ import { RoleToggleModule } from 'ish-core/role-toggle.module';
 import { ModuleLoaderService } from 'ish-core/utils/module-loader/module-loader.service';
 
 import { CaptchaExportsModule } from '../extensions/captcha/exports/captcha-exports.module';
+import { InventoryExportsModule } from '../extensions/inventory/exports/inventory-exports.module';
 import { OrderTemplatesExportsModule } from '../extensions/order-templates/exports/order-templates-exports.module';
 import { PunchoutExportsModule } from '../extensions/punchout/exports/punchout-exports.module';
 import { QuickorderExportsModule } from '../extensions/quickorder/exports/quickorder-exports.module';
@@ -147,6 +148,7 @@ const importExportModules = [
   FormsSharedModule,
   IconModule,
   InfiniteScrollModule,
+  InventoryExportsModule,
   NgbCarouselModule,
   NgbCollapseModule,
   NgbDropdownModule,

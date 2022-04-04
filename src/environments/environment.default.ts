@@ -6,7 +6,7 @@ export const environment: Environment = {
 
   icmChannel: 'inSPIRED-inTRONICS-Site',
 
-  features: ['compare', 'recently', 'rating', 'guestCheckout', 'wishlists'],
+  features: ['compare', 'recently', 'rating', 'guestCheckout', 'wishlists', 'inventory'],
 
   ...overrides,
 };
