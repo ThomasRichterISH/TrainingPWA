@@ -14,7 +14,7 @@ warehouses$: Observable<Warehouse[]>;
 constructor(private warehousesFacade: WarehousesFacade){}
 
 ngOnInit() {
-  this.warehouses$ = this.warehousesFacade.getWarehouses$;
+  this.warehouses$ = this.warehousesFacade.warehouses$();
 
 }
 

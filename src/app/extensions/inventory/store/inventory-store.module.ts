@@ -4,10 +4,12 @@ import { ActionReducerMap, StoreModule } from '@ngrx/store';
 import { pick } from 'lodash-es';
 
 import { InventoryState } from './inventory-store';
+import { WarehousesEffects } from './warehouses/warehouses.effects';
+import { warehousesReducer } from './warehouses/warehouses.reducer';
 
-const inventoryReducers: ActionReducerMap<InventoryState> = {};
+const inventoryReducers: ActionReducerMap<InventoryState> = { warehouses: warehousesReducer };
 
-const inventoryEffects = [];
+const inventoryEffects = [WarehousesEffects];
 
 // not-dead-code
 @NgModule({
